@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel="stylesheet" href="./assets/images/bgimg.png"> -->
+
+    <title> Movie Model  </title>
+</head>
+<body>
+    
+    <!-- two way in image geu shkto aapn  -->
+    
+    <!--  header section -->
+         <div class="container my-5">
+            <!--  header section -->
+            <div class="row">
+                <div class="col-6">
+                   <a href="index.html" class="logo"> 
+                    <img src="./assets/images/logo.svg" alt="">
+
+                   </a>
+                   
+                </div>
+                <div class="col-md-6  text-right">
+                    <button id="ShowModalBtn" class="btn btn-sm  btn-danger nfxBtn-primary"> Add Movie</button>
+
+                </div>
+            </div>
+
+            <!--  main section aapm yat row  add kru shkto -->
+              <!-- <main>
+                <div class="row">
+                     //ek row mday 3 movie dakhvaych 
+                     
+                </div>
+              </main> -->
+
+              <!-- 4 pahijay aasl tr left to right pahijay tr container fluid use kraych -->
+               <div class="container-fluid">
+                <div class="row"  id="movieContainer">
+                   
+
+                  <!--  col-3  dynamically show kray he commented part js mday -->
+                  <!-- <div class="col-md-3">
+                    <figure class="movieCard">
+                      // multimedia img video 
+                        <img src="data:image/jpeg;base64,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"
+                        alt="Swadesh"
+                        title="Swadesh">
+                      <figcaption>
+                           //content 
+                        <div class="ratingTitle">
+                         <div class="row">
+                           <div class="col-10">
+                             <h5 class="m-0">Swades</h5>
+                           </div>
+                           <div class="col-2">
+                             <small class="rating bg-success p-2"> 4 </small>
+                           </div>
+                         </div>
+                        </div>
+                          <div class="movieInfo">
+                              <h2>Swadesh</h2>
+                              <p class="overview">
+                               Swades (transl. Homeland) is a 2004 Indian Hindi-language social drama film co-written, directed and produced by Ashutosh Gowariker.[3] The film stars Shah Rukh Khan, alongside Gayatri Joshi, Kishori Ballal, Daya Shankar Pandey, Rajesh Vivek, and Lekh Tandon.
+
+                               The plot was based on two episodes of the series Vaapsi on Zee TV's Yule Love Stories (1994–95) which starred Gowariker.[4] The story of a man setting up a micro.
+
+                               Mohan Bhargava is a non-resident Indian who works as a Project Manager on the Global Precipitation Measurement (GPM) program at NASA in Washington, D.C. Mohan moved to the U.S. for college studies and kept on living there after his parents in India died in a car accident. He keeps worrying about Kaveri Amma, a nanny at his home in Uttar Pradesh who looked after him during his childhood days. After his parents' death, Kaveri Amma went to live in an old age home in Delhi and eventually lost contact with Mohan. Mohan wishes to go to India and bring Kaveri Amma back with him to the U. S. Due to the recent success of Phase I of his project, he takes a few weeks off and travels to India. He goes to the old age home but learns that Kaveri Amma no longer lives there and went to a village named Charanpur a year ago. Mohan then decides to travel to Charanpur, in Uttar Pradesh.
+                              </p>
+                          </div> 
+
+                          <div class="active">
+                             <button class="btn btn-sm btn-outline-info"> Edit </button>  
+                             <button class="btn btn-sm btn-outline-danger"> Remove </button>  
+                         </div>
+                      </figcaption>
+                   </figure>
+                 </div> 
+                </div>-->
+               </div>
+
+
+         </div>
+    
+
+
+
+
+
+
+
+
+
+         <div class="backDrop modalClose" id="backDrop"> 
+
+         </div>
+         <div class="movieModal " id="movieModal"> 
+            <form id="movieForm">
+                <div class="card">
+                <div class="card-header  d-flex justify-content-between">
+                    <h3 class="m-0"> Add Movie Details</h3>
+                    <!-- we get the font awsome web site close icon = xmark wala gaych -->
+                    <i class="fa-solid fa-xmark fa-2x modalClose"> </i> 
+                    <!-- <i class="fa-solid fa-xmark fa-2x"> </i> -->
+                </div>
+
+                <div class="card-body">
+                    <!-- control add kro -->
+                     <!-- 1)movie title , 2) movie url 3), 4) -->
+
+                  <div class="form-group">
+                    <label for="movieTitle"> Movie Title</label>
+                     <input  required type="text" class="form-control" id="movieTitle">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="movieImgUrl"> Movie Image Url </label>
+                     <input required  type="text" class="form-control" id="movieImgurl">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="movieDescription"> Movie Description </label>
+                     <textarea required rows="4" type="text" class="form-control" id="movieDescription"> </textarea>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="movieRating"> Movie Image Url </label>
+                    <!-- required cha emty from create na ho is liye required write krna -->
+                     <select required  id="movieRating" class="form-control"> 
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="card-footer">
+                  <!-- button add kro -->
+                   <button class="btn btn-danger btn-sm nfxBtn-primary">Add Movie </button>
+                   <button  type="button"  class="btn btn-danger btn-sm nfxBtn-primary modalClose"> close </button>
+                </div>
+            </div> 
+        </form>
+           
+         </div>
+    <script src="./assets/js/app.js"> </script>
+</body>
+</html>
